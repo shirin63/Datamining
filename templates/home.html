@@ -1,16 +1,97 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Flask Tutorial</title>
-  </head>
-  <body>
-    {% extends "template.html" %}
-    {% block content %}
-    
-    <h1> My First Try Using Flask </h1>
-    <p> Flask is Fun </p>
-    
-    {% endblock %}
-  </body>
-</html>
+{% extends "template.html" %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-lg-6">
+<form action="/FormSubmit" target="_blank" method="POST">
+  <div class="form-group">
+    <label for="shelter_name">Shelter Name</label>
+    <input type="text" class="form-control" id="SHELTER_NAME" name="SHELTER_NAME" placeholder="Enter shelter name">
+  </div>
+
+  <div class="form-group">
+    <label for="shelter_capacity">Capacity</label>
+    <input type="number" class="form-control" id="CAPACITY" name="CAPACITY" placeholder="Capacity">
+  </div>
+
+  <div class="form-group">
+    <label for="program_name">Program Name</label>
+    <input type="text" class="form-control" id="PROGRAM_NAME" placeholder="Program name as specified in the docs">
+  </div> 
+  
+  <div class="form-group">
+    <label for="ORGANIZATION_NAME">ORGANIZATION_NAME</label>
+    <input type="text" class="form-control" id="ORGANIZATION_NAME" >
+  </div>
+
+  <div class="form-group">
+    <label for="SECTOR">SECTOR</label>
+    <input type="text" class="form-control" id="SECTOR" >
+  </div>
+
+  <div class="form-group">
+    <label for="FACILITY_NAME">FACILITY_NAME</label>
+    <input type="text" class="form-control" id="FACILITY_NAME">
+  </div>
+
+
+  <div class="form-group">
+    <label for="OCCUPANCY">OCCUPANCY</label>
+    <input type="number" class="form-control" id="OCCUPANCY" >
+  </div>
+
+  <div class="form-group">
+    <label for="OCCUPANCY_DATE">OCCUPANCY_DATE</label>
+    <input type="date" class="form-control" id="OCCUPANCY_DATE" >
+  </div>
+  <div class="form-group ">
+    <label for="SHELTER_PROVINCE">SHELTER_PROVINCE</label>
+    <input type="text" class="form-control" id="SHELTER_PROVINCE" >
+  </div>
+
+  <div class="form-group ">
+    <label for="SHELTER_CITY">SHELTER_CITY</label>
+    <input type="text" class="form-control" id="SHELTER_CITY" >
+  </div>
+
+
+  <div class="form-group ">
+    <label for="SHELTER_ADDRESS">SHELTER_ADDRESS</label>
+    <input type="text" class="form-control" id="SHELTER_ADDRESS" >
+  </div>
+
+
+  <div class="form-group ">
+    <label for="SHELTER_POSTAL_CODE">SHELTER_POSTAL_CODE</label>
+    <input type="text" class="form-control" id="SHELTER_POSTAL_CODE" >
+  </div>
+
+
+
+
+  
+  <button type="submit" id='submitBtn'class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+
+<script>
+$('#submitBtn1').click(function(){
+  var SHELTER_NAME = $('#shelter_name').val()
+  var CAPACITY = $('#shelter_capacity').val()
+  var PROGRAM_NAME = $("#program_name").val()
+  var ORGANIZATION_NAME = $("#ORGANIZATION_NAME").val()
+  var SECTOR = $("#SECTOR").val()
+  //create a JSONObject of data
+  var data ={'SHELTER_NAME':SHELTER_NAME,
+        'CAPACITY':CAPACITY,
+        'PROGRAM_NAME':PROGRAM_NAME,
+        'ORGANIZATION_NAME':ORGANIZATION_NAME}
+
+
+  // $.ajax({
+
+  // })
+  
+});
+</script>
+{% endblock %}
