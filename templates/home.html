@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row justify-content-center">
 <div class="col-lg-6">
-<form action="/FormSubmit" target="_blank" method="POST">
+<form>
   <div class="form-group">
     <label for="shelter_name">Shelter Name</label>
     <input type="text" class="form-control" id="SHELTER_NAME" name="SHELTER_NAME" placeholder="Enter shelter name">
@@ -69,28 +69,49 @@
 
 
   
-  <button type="submit" id='submitBtn'class="btn btn-primary">Submit</button>
+  <button type="button" id='submitBtn'class="btn btn-primary">Submit</button>
 </form>
 </div>
 </div>
 
 <script>
-$('#submitBtn1').click(function(){
-  var SHELTER_NAME = $('#shelter_name').val()
-  var CAPACITY = $('#shelter_capacity').val()
-  var PROGRAM_NAME = $("#program_name").val()
+$('#submitBtn').click(function(){
+  var SHELTER_NAME = $('#SHELTER_NAME').val()
+  var CAPACITY = $('#CAPACITY').val()
+  var PROGRAM_NAME = $("#PROGRAM_NAME").val()
   var ORGANIZATION_NAME = $("#ORGANIZATION_NAME").val()
   var SECTOR = $("#SECTOR").val()
+  var FACILITY_NAME = $("#FACILITY_NAME").val()
+  var OCCUPANCY = $("#OCCUPANCY").val()
+  var SHELTER_PROVINCE = $("#SHELTER_PROVINCE").val()
+  var OCCUPANCY_DATE =$('#OCCUPANCY_DATE').val()
+  var SHELTER_CITY = $("#SHELTER_CITY").val()
+  var SHELTER_ADDRESS = $("#SHELTER_ADDRESS").val()
+  var SHELTER_POSTAL_CODE = $("#SHELTER_POSTAL_CODE").val()
+
   //create a JSONObject of data
   var data ={'SHELTER_NAME':SHELTER_NAME,
         'CAPACITY':CAPACITY,
         'PROGRAM_NAME':PROGRAM_NAME,
-        'ORGANIZATION_NAME':ORGANIZATION_NAME}
-
-
-  // $.ajax({
-
-  // })
+        'ORGANIZATION_NAME':ORGANIZATION_NAME,
+        'SECTOR':FACILITY_NAME,
+        'FACILITY_NAME':FACILITY_NAME,
+        'OCCUPANCY':OCCUPANCY,
+        'OCCUPANCY_DATE':OCCUPANCY_DATE,
+        'SHELTER_CITY':SHELTER_CITY,
+        'SHELTER_ADDRESS':SHELTER_ADDRESS,
+        'SHELTER_POSTAL_CODE':SHELTER_POSTAL_CODE
+        }
+  console.log(data)
+  $.ajax({
+  type: "POST",
+  url: "/FormSubmit",
+  contentType:'application/json',
+  data: JSON.stringify(data),
+  success: function(response){
+    console.log(response)
+  }
+});
   
 });
 </script>
