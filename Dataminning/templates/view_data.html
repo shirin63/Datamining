@@ -1,0 +1,67 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- https://datatables.net/examples/basic_init/zero_configuration.html -->
+
+  <table id="dataview" class="display" style="width:100%">
+    <thead>
+            <tr>
+                <th>Shelter Name</th>
+                <th>Capacity</th>
+                <th>Program Name</th>
+                <th>Organization Name</th>
+                <th>Sector</th>
+                <th>Facility Name</th>
+                <th>Occupancy</th>
+                <th>Occupancy Date</th>
+                <th>Province</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Postal Code </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+              <th>Shelter Name</th>
+              <th>Capacity</th>
+              <th>Program Name</th>
+              <th>Organization Name</th>
+              <th>Sector</th>
+              <th>Facility Name</th>
+              <th>Occupancy</th>
+              <th>Occupancy Date</th>
+              <th>Province</th>
+              <th>City</th>
+              <th>Address</th>
+              <th>Postal Code </th>
+            </tr>
+        </tfoot>
+</table>
+
+<script>
+// https://datatables.net/manual/data/#Objects
+$(document).ready(function() {
+  $.get( "/getAllData", function( data ) {
+  var data = JSON.parse(data);  
+  $('#dataview').DataTable({
+        data : data,
+        columns : [
+            { "data" : "SHELTER_NAME" },
+            { "data" : "CAPACITY" },
+            { "data" : "PROGRAM_NAME" },
+            { "data" : "ORGANIZATION_NAME" },
+            { "data" : "SECTOR" },
+            { "data" : "FACILITY_NAME" },
+            { "data" : "OCCUPANCY" },
+            { "data" : "OCCUPANCY_DATE" },
+            { "data" : "SHELTER_PROVINCE" },
+            { "data" : "SHELTER_CITY" },
+            { "data" : "SHELTER_ADDRESS" },
+            { "data" : "SHELTER_POSTAL_CODE" }
+        ]
+    });
+  });
+  
+} );
+</script>
+
+{% endblock %}
